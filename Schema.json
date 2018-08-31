@@ -1,0 +1,103 @@
+{
+  "definitions": {
+    "semver": {
+      "type": "string",
+      "examples": [
+        "0.0.0.0"
+      ],
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$"
+    },
+    "verrange": {
+      "type": "string",
+      "examples": [
+        "*",
+        "0.0.0.0-*",
+        "0.0.0.0-1.0.*",
+        "*-0.3.5.4"
+      ],
+      "pattern": "(?:^\\*$)|(?:^((?:(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?)|\\*)-((?:(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?)|\\*)$)"
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "root",
+  "required": [
+    "name",
+    "id",
+    "version",
+    "gameVersion",
+    "description",
+    "author"
+  ],
+  "properties": {
+    "name": {
+      "$id": "#/properties/name",
+      "type": "string",
+      "title": "plugin name",
+      "examples": [
+        "Beat Saber IPA"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "id": {
+      "$id": "#/properties/id",
+      "type": "string",
+      "title": "modsaber id",
+      "examples": [
+        "beatsaber-ipa-reloaded"
+      ],
+      "pattern": "^([^\\s]*)$"
+    },
+    "version": {
+      "$id": "#/properties/version",
+      "$ref": "#/definitions/semver",
+      "title": "plugin version"
+    },
+    "gameVersion": {
+      "$id": "#/properties/gameVersion",
+      "$ref": "#/definitions/semver",
+      "title": "compatable game version"
+    },
+    "description": {
+      "$id": "#/properties/description",
+      "type": "string",
+      "title": "plugin description",
+      "examples": [
+        "A build of IPA designed for Beat Saber"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "author": {
+      "$id": "#/properties/author",
+      "type": "string",
+      "title": "plugin author",
+      "examples": [
+        "DaNike",
+        "xyonico"
+      ],
+    },
+    "dependsOn": {
+      "$id": "#/properties/dependsOn",
+      "type": "object",
+      "title": "dependencies",
+      "patternProperties": {
+        "^([^\\s]*)$": {
+          "$ref": "#/definitions/verrange",
+          "title": "a dependency"
+        }
+      }
+    },
+    "incompatible": {
+      "$id": "#/properties/incompatible",
+      "type": "object",
+      "title": "incompatabilities",
+      "patternProperties": {
+        "^([^\\s]*)$": {
+          "$ref": "#/definitions/verrange",
+          "title": "an incompatible mod item"
+        }
+      }
+    }
+  }
+}
