@@ -98,6 +98,11 @@
           "title": "an incompatible mod item"
         }
       }
+    },
+    "defaults": {
+      "$id": "#/properties/defaults",
+      "type": "object",
+      "title": "to-be-parsed option defaults"
     }
   }
 }
