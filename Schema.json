@@ -45,7 +45,8 @@
     "gameVersion",
     "description",
     "author",
-    "files"
+    "files",
+    "features"
   ],
   "properties": {
     "name": {
@@ -122,10 +123,15 @@
       "title": "files contained within mod",
       "$ref": "#/definitions/manifest_directory_object"
     },
-    "defaults": {
-      "$id": "#/properties/defaults",
-      "type": "object",
-      "title": "to-be-parsed option defaults"
+    "features": {
+      "$id": "#/properties/features",
+      "type": "array",
+      "title": "features to enable for plugin",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "title": "a feature to enable"
+      }
     }
   }
 }
