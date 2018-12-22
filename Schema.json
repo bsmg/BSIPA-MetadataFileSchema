@@ -29,7 +29,7 @@
         "[^<>:\"/\\\\|\\?\\*]*?\\.[^<>:\"/\\\\|\\?\\*\\.]+": {
           "$ref": "#/definitions/manifest_file_hash"
         },
-        "[^<>:\"/\\\\|\\?\\*]+": {
+        "[^<>:\"/\\\\|\\?\\*\\.]+": {
           "$ref": "#/definitions/manifest_directory_object"
         }
       }
