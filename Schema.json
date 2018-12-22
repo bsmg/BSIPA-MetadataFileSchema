@@ -59,7 +59,7 @@
     },
     "id": {
       "$id": "#/properties/id",
-      "type": "string",
+      "type": ["string","null"],
       "title": "modsaber id",
       "examples": [
         "beatsaber-ipa-reloaded"
