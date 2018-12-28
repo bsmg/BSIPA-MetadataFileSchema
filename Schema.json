@@ -88,8 +88,8 @@
         }
       }
     },
-    "incompatible": {
-      "$id": "#/properties/incompatible",
+    "conflictsWith": {
+      "$id": "#/properties/conflictsWith",
       "type": "object",
       "title": "incompatabilities",
       "patternProperties": {
