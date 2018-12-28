@@ -12,11 +12,6 @@
   "incompatible": {
     "song-loader": "*-4.3.2"
   },
-  "files": {
-    "IPA": {
-      "winhttp.dll": "0000000000000000000000000000000000000000"
-    }
-  },
   "features": [
     "early-load",
     "incremental-update"
