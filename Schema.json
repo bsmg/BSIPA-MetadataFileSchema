@@ -99,6 +99,24 @@
         }
       }
     },
+    "loadAfter": {
+      "$id": "#/properties/loadAfter",
+      "type": "array",
+      "title": "plugins to load before this one",
+      "items": {
+        "type": "string",
+        "title": "the plugin id to load first"
+      }
+    },
+    "loadBefore": {
+      "$id": "#/properties/loadBefore",
+      "type": "array",
+      "title": "plugins to load after this one",
+      "items": {
+        "type": "string",
+        "title": "the plugin id to load after"
+      }
+    },
     "features": {
       "$id": "#/properties/features",
       "type": "array",
