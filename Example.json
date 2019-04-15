@@ -7,10 +7,10 @@
   "gameVersion": "0.12.2",
   "author": "DaNike",
   "dependsOn": {
-    "scoresaber": "*-1.7.2"
+    "scoresaber": "^1.7.2"
   },
   "conflictsWith": {
-    "song-loader": "*-4.3.2"
+    "song-loader": "^4.3.2"
   },
   "features": [
     "early-load",

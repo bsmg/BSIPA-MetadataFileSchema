@@ -21,8 +21,7 @@
     "version",
     "gameVersion",
     "description",
-    "author",
-    "features"
+    "author"
   ],
   "properties": {
     "name": {
@@ -120,6 +119,12 @@
         "type": "string",
         "title": "a feature to enable"
       }
+    },
+    "icon": {
+      "$id": "#/properties/icon",
+      "type": "string",
+      "title": "the icon to represent the plugin, as a PNG",
+      "pattern": ".*\\.png"
     }
   }
 }
