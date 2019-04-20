@@ -10,6 +10,10 @@
     "verrange": {
       "type": "string",
       "pattern": "^(?:[~\\^*]=?)?(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?(?:-(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?)?"
+    },
+    "url": {
+      "type": "string",
+      "pattern": "https?:\/\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,}(\/[-a-zA-Z0-9@:%_\\+.~#?&//=]*)?"
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema",
@@ -125,6 +129,28 @@
       "type": "string",
       "title": "the icon to represent the plugin, as a PNG",
       "pattern": ".*\\.png"
+    },
+    "links": {
+      "$id": "#/properties/links",
+      "type": "object",
+      "title": "various links associated with the mod",
+      "properties": {
+        "project-home": {
+          "$id": "#/properties/links/properties/project-home",
+          "$ref": "#/definitions/url",
+          "title": "a link to the project home page. if not specified, same as project-source"
+        },
+        "project-source": {
+          "$id": "#/properties/links/properties/project-source",
+          "$ref": "#/definitions/url",
+          "title": "a link to the project source. if not specified, same as project-home."
+        },
+        "donate": {
+          "$id": "#/properties/links/properties/donate",
+          "$ref": "#/definitions/url",
+          "title": "a link to a donations page"
+        }
+      }
     }
   }
 }

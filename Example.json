@@ -3,17 +3,18 @@
   "name": "Beat Saber IPA",
   "id": "beatsaber-ipa-reloaded",
   "description": "A modified build of IPA for Beat Saber.",
-  "version": "3.12.0",
-  "gameVersion": "0.12.2",
+  "version": "3.12.13",
+  "gameVersion": "0.13.2",
   "author": "DaNike",
   "dependsOn": {
-    "scoresaber": "^1.7.2"
+    "ScoreSaber": "^1.7.2"
   },
   "conflictsWith": {
-    "song-loader": "^4.3.2"
+    "Song Loader": "^4.3.2"
   },
-  "features": [
-    "early-load",
-    "incremental-update"
-  ]
+  "features": [],
+  "links": {
+    "project-source": "https://github.com/beat-saber-modding-group/BeatSaber-IPA-Reloaded",
+    "project-home": "https://github.com/beat-saber-modding-group/BeatSaber-IPA-Reloaded/wiki"
+  }
 }
