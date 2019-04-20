@@ -58,12 +58,14 @@
     },
     "description": {
       "$id": "#/properties/description",
-      "type": "string",
+      "type": ["string", "array"],
       "title": "plugin description",
       "examples": [
         "A build of IPA designed for Beat Saber"
       ],
-      "pattern": "^(.*)$"
+      "items": {
+        "type": "string"
+      }
     },
     "author": {
       "$id": "#/properties/author",

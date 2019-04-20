@@ -2,7 +2,11 @@
   "$schema": "./Schema.json",
   "name": "Beat Saber IPA",
   "id": "beatsaber-ipa-reloaded",
-  "description": "A modified build of IPA for Beat Saber.",
+  "description": [
+    "A modified build of IPA for Beat Saber.",
+    "",
+    "Multiline description."
+  ],
   "version": "3.12.13",
   "gameVersion": "0.13.2",
   "author": "DaNike",
