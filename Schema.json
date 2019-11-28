@@ -119,7 +119,7 @@
       "$id": "#/properties/icon",
       "type": "string",
       "title": "Mod Icon",
-      "description": "PNG icon for this mod",
+      "description": "Path to a PNG icon for this mod",
       "format": "uri",
       "pattern": ".*\\.png"
     },
@@ -169,10 +169,17 @@
           "$id": "#/properties/publish/properties/resource",
           "type": "string",
           "title": "Resource",
-          "description": "Resource to upload to BeatMods2 (if it is a file, will be uploaded directly; if it is a folder, zipped contents will be uploaded)",
+          "description": "Path to the resource to upload to BeatMods2 (if it is a file, will be uploaded directly; if it is a folder, zipped contents will be uploaded)",
           "format": "uri"
         }
       }
+    },
+    "readme": {
+      "$id": "#/properties/readme",
+      "type": "string",
+      "title": "Readme",
+      "description": " Path to a markdown readme to display on BeatMods2 (same as description if not specified)",
+      "format": "uri"
     }
   }
 }
