@@ -2,9 +2,6 @@
   "definitions": {
     "semver": {
       "type": "string",
-      "examples": [
-        "0.0.0"
-      ],
       "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$"
     },
     "verrange": {
@@ -13,144 +10,141 @@
     },
     "url": {
       "type": "string",
-      "pattern": "https?:\/\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,}(\/[-a-zA-Z0-9@:%_\\+.~#?&//=]*)?"
+      "pattern": "https?://(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,}(/[-a-zA-Z0-9@:%_\\+.~#?&//=]*)?"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[0-9A-Za-z_.-]+$"
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema",
   "type": "object",
   "title": "root",
-  "required": [
-    "name",
-    "id",
-    "version",
-    "gameVersion",
-    "description",
-    "author"
-  ],
+  "required": ["id", "name", "version", "gameVersion", "description", "author"],
   "properties": {
+    "id": {
+      "$id": "#/properties/id",
+      "$ref": "#/definitions/id",
+      "title": "Mod ID",
+      "description": "Unique ID used my BeatMods2 and other mods to identify this mod"
+    },
     "name": {
       "$id": "#/properties/name",
       "type": "string",
-      "title": "plugin name",
-      "examples": [
-        "Beat Saber IPA"
-      ],
-      "pattern": "^(.*)$"
-    },
-    "id": {
-      "$id": "#/properties/id",
-      "type": ["string","null"],
-      "title": "modsaber id",
-      "examples": [
-        "beatsaber-ipa-reloaded"
-      ],
-      "pattern": "^([^\\s]*)$"
+      "title": "Mod Name",
+      "pattern": "^[^\\n\\r\\t]+$"
     },
     "version": {
       "$id": "#/properties/version",
       "$ref": "#/definitions/semver",
-      "title": "plugin version"
+      "title": "Mod Version",
+      "description": "Version according to the semantic versioning specification"
     },
     "gameVersion": {
       "$id": "#/properties/gameVersion",
-      "$ref": "#/definitions/semver",
-      "title": "compatable game version"
+      "type": "string",
+      "title": "Game Version",
+      "description": "Beat Saber version this mod was designed for"
     },
     "description": {
       "$id": "#/properties/description",
-      "type": ["string", "array"],
-      "title": "plugin description",
-      "examples": [
-        "A build of IPA designed for Beat Saber"
-      ],
+      "type": "array",
+      "title": "Mod Description",
       "items": {
-        "type": "string"
+        "type": "string",
+        "pattern": "^[^\\n\\r]*$"
       }
     },
     "author": {
       "$id": "#/properties/author",
       "type": "string",
-      "title": "plugin author",
-      "examples": [
-        "DaNike",
-        "xyonico"
-      ]
+      "title": "Mod Author"
     },
     "dependsOn": {
       "$id": "#/properties/dependsOn",
       "type": "object",
-      "title": "dependencies",
+      "title": "Dependencies",
+      "description": "Other mods this mod depends on mapped by ID",
       "patternProperties": {
-        "^([^\\s]*)$": {
+        "^[0-9A-Za-z_.-]+$": {
           "$ref": "#/definitions/verrange",
-          "title": "a dependency"
+          "description": "Version range according to the semantic versioning specification"
         }
       }
     },
     "conflictsWith": {
       "$id": "#/properties/conflictsWith",
       "type": "object",
-      "title": "incompatabilities",
+      "title": "Incompatibilities",
+      "description": "Other mods this mod conflicts with mapped by ID",
       "patternProperties": {
-        "^([^\\s]*)$": {
+        "^[0-9A-Za-z_.-]+$": {
           "$ref": "#/definitions/verrange",
-          "title": "an incompatible mod item"
+          "description": "Version range according to the semantic versioning specification"
         }
       }
     },
     "loadAfter": {
       "$id": "#/properties/loadAfter",
       "type": "array",
-      "title": "plugins to load before this one",
+      "description": "Mods to load before this one",
       "items": {
-        "type": "string",
-        "title": "the plugin id to load first"
-      }
+        "$ref": "#/definitions/id",
+        "description": "Mod ID"
+      },
+      "uniqueItems": true
     },
     "loadBefore": {
       "$id": "#/properties/loadBefore",
       "type": "array",
-      "title": "plugins to load after this one",
+      "description": "Mods to load after this one",
       "items": {
-        "type": "string",
-        "title": "the plugin id to load after"
-      }
+        "$ref": "#/definitions/id",
+        "description": "Mod ID"
+      },
+      "uniqueItems": true
     },
     "features": {
       "$id": "#/properties/features",
       "type": "array",
-      "title": "features to enable for plugin",
-      "uniqueItems": true,
+      "title": "Mod Features",
+      "description": "Features to enable for this mod",
       "items": {
-        "type": "string",
-        "title": "a feature to enable"
-      }
+        "type": "string"
+      },
+      "uniqueItems": true
     },
     "icon": {
       "$id": "#/properties/icon",
       "type": "string",
-      "title": "the icon to represent the plugin, as a PNG",
+      "title": "Mod Icon",
+      "description": "PNG icon for this mod",
+      "format": "uri",
       "pattern": ".*\\.png"
     },
     "links": {
       "$id": "#/properties/links",
       "type": "object",
-      "title": "various links associated with the mod",
+      "title": "Links",
+      "description": "Links associated with this mod",
       "properties": {
         "project-home": {
           "$id": "#/properties/links/properties/project-home",
           "$ref": "#/definitions/url",
-          "title": "a link to the project home page. if not specified, same as project-source"
+          "title": "Home",
+          "description": "Link to the mod homepage (same as project-source if not specified)"
         },
         "project-source": {
           "$id": "#/properties/links/properties/project-source",
           "$ref": "#/definitions/url",
-          "title": "a link to the project source. if not specified, same as project-home."
+          "title": "Source",
+          "desccription": "Link to the mod source (same as project-home if not specified)"
         },
         "donate": {
           "$id": "#/properties/links/properties/donate",
           "$ref": "#/definitions/url",
-          "title": "a link to a donations page"
+          "title": "Donation",
+          "description": "Link to a donation page"
         }
       }
     }
