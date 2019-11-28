@@ -110,7 +110,8 @@
       "title": "Mod Features",
       "description": "Features to enable for this mod",
       "items": {
-        "type": "string"
+        "type": "string",
+        "description": "Feature name"
       },
       "uniqueItems": true
     },
@@ -145,6 +146,31 @@
           "$ref": "#/definitions/url",
           "title": "Donation",
           "description": "Link to a donation page"
+        }
+      }
+    },
+    "publish": {
+      "$id": "#/properties/publish",
+      "type": "object",
+      "title": "Publishing Settings",
+      "description": "Settings to use when publishing this mod using bm2",
+      "properties": {
+        "script": {
+          "$id": "#/properties/publish/properties/script",
+          "type": "array",
+          "title": "Publishing Script",
+          "description": "Commands to run before publishing (cwd will be the manifest directory) (will run even if resource is not specified)",
+          "items": {
+            "type": "string",
+            "description": "Command"
+          }
+        },
+        "resource": {
+          "$id": "#/properties/publish/properties/resource",
+          "type": "string",
+          "title": "Resource",
+          "description": "Resource to upload to BeatMods2 (if it is a file, will be uploaded directly; if it is a folder, zipped contents will be uploaded)",
+          "format": "uri"
         }
       }
     }
