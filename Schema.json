@@ -14,7 +14,7 @@
     },
     "id": {
       "type": "string",
-      "pattern": "^[0-9A-Za-z_.-]+$"
+      "pattern": "^([A-Z][0-9a-z]*)+(\\.([A-Z][0-9a-z]*)+)*$"
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema",
@@ -80,7 +80,7 @@
       "title": "Dependencies",
       "description": "Other mods this mod depends on mapped by ID",
       "patternProperties": {
-        "^[0-9A-Za-z_.-]+$": {
+        "^([A-Z][0-9a-z]*)+(\\.([A-Z][0-9a-z]*)+)*$": {
           "$ref": "#/definitions/verrange",
           "description": "Version range according to the semantic versioning specification"
         }
@@ -92,7 +92,7 @@
       "title": "Incompatibilities",
       "description": "Other mods this mod conflicts with mapped by ID",
       "patternProperties": {
-        "^[0-9A-Za-z_.-]+$": {
+        "^([A-Z][0-9a-z]*)+(\\.([A-Z][0-9a-z]*)+)*$": {
           "$ref": "#/definitions/verrange",
           "description": "Version range according to the semantic versioning specification"
         }
