@@ -14,11 +14,14 @@
     "url": {
       "type": "string",
       "pattern": "https?:\/\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,}(\/[-a-zA-Z0-9@:%_\\+.~#?&//=]*)?"
+    },
+    "typename": {
+      "type": "string",
+      "pattern": "^(?:((?!\\d)\\w+(?:\\.(?!\\d)\\w+)*)\\.)?((?!\\d)\\w+)$"
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema",
   "type": "object",
-  "title": "root",
   "required": [
     "name",
     "id",
@@ -31,7 +34,7 @@
     "name": {
       "$id": "#/properties/name",
       "type": "string",
-      "title": "plugin name",
+      "description": "plugin name",
       "examples": [
         "Beat Saber IPA"
       ],
@@ -40,7 +43,7 @@
     "id": {
       "$id": "#/properties/id",
       "type": ["string","null"],
-      "title": "modsaber id",
+      "description": "modsaber id",
       "examples": [
         "beatsaber-ipa-reloaded"
       ],
@@ -49,17 +52,17 @@
     "version": {
       "$id": "#/properties/version",
       "$ref": "#/definitions/semver",
-      "title": "plugin version"
+      "description": "plugin version"
     },
     "gameVersion": {
       "$id": "#/properties/gameVersion",
       "$ref": "#/definitions/semver",
-      "title": "compatable game version"
+      "description": "compatable game version"
     },
     "description": {
       "$id": "#/properties/description",
       "type": ["string", "array"],
-      "title": "plugin description",
+      "description": "plugin description",
       "examples": [
         "A build of IPA designed for Beat Saber"
       ],
@@ -70,7 +73,7 @@
     "author": {
       "$id": "#/properties/author",
       "type": "string",
-      "title": "plugin author",
+      "description": "plugin author",
       "examples": [
         "DaNike",
         "xyonico"
@@ -79,78 +82,90 @@
     "dependsOn": {
       "$id": "#/properties/dependsOn",
       "type": "object",
-      "title": "dependencies",
+      "description": "dependencies",
       "patternProperties": {
         "^([^\\s]*)$": {
           "$ref": "#/definitions/verrange",
-          "title": "a dependency"
+          "description": "a dependency"
         }
       }
     },
     "conflictsWith": {
       "$id": "#/properties/conflictsWith",
       "type": "object",
-      "title": "incompatabilities",
+      "description": "incompatabilities",
       "patternProperties": {
         "^([^\\s]*)$": {
           "$ref": "#/definitions/verrange",
-          "title": "an incompatible mod item"
+          "description": "an incompatible mod item"
         }
       }
     },
     "loadAfter": {
       "$id": "#/properties/loadAfter",
       "type": "array",
-      "title": "plugins to load before this one",
+      "description": "plugins to load before this one",
       "items": {
         "type": "string",
-        "title": "the plugin id to load first"
+        "description": "the plugin id to load first"
       }
     },
     "loadBefore": {
       "$id": "#/properties/loadBefore",
       "type": "array",
-      "title": "plugins to load after this one",
+      "description": "plugins to load after this one",
       "items": {
         "type": "string",
-        "title": "the plugin id to load after"
+        "description": "the plugin id to load after"
       }
     },
     "features": {
       "$id": "#/properties/features",
       "type": "array",
-      "title": "features to enable for plugin",
+      "description": "features to enable for plugin",
       "uniqueItems": true,
       "items": {
         "type": "string",
-        "title": "a feature to enable"
+        "description": "a feature to enable"
       }
     },
     "icon": {
       "$id": "#/properties/icon",
       "type": "string",
-      "title": "the icon to represent the plugin, as a PNG",
+      "description": "the icon to represent the plugin, as a PNG",
       "pattern": ".*\\.png"
     },
     "links": {
       "$id": "#/properties/links",
       "type": "object",
-      "title": "various links associated with the mod",
+      "description": "various links associated with the mod",
       "properties": {
         "project-home": {
           "$id": "#/properties/links/properties/project-home",
           "$ref": "#/definitions/url",
-          "title": "a link to the project home page. if not specified, same as project-source"
+          "description": "a link to the project home page. if not specified, same as project-source"
         },
         "project-source": {
           "$id": "#/properties/links/properties/project-source",
           "$ref": "#/definitions/url",
-          "title": "a link to the project source. if not specified, same as project-home."
+          "description": "a link to the project source. if not specified, same as project-home."
         },
         "donate": {
           "$id": "#/properties/links/properties/donate",
           "$ref": "#/definitions/url",
-          "title": "a link to a donations page"
+          "description": "a link to a donations page"
+        }
+      }
+    },
+    "misc": {
+      "$id": "#/properties/misc",
+      "type": "object",
+      "description": "miscellaneous properties",
+      "properties": {
+        "plugin-hint": {
+          "$id": "#/properties/mist/properties/plugin-hint",
+          "$ref": "#/definitions/typename",
+          "description": "a hint for the loader for where to find the plugin type"
         }
       }
     }
