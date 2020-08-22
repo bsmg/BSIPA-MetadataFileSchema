@@ -121,12 +121,13 @@
     },
     "features": {
       "$id": "#/properties/features",
-      "type": "array",
+      "type": "object",
       "description": "features to enable for plugin",
-      "uniqueItems": true,
-      "items": {
-        "type": "string",
-        "description": "a feature to enable"
+      "patternProperties": {
+        "^([^\\s]*)$": {
+          "type": "object",
+          "description": "a descriptor object for the feature"
+        }
       }
     },
     "icon": {
