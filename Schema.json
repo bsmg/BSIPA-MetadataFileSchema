@@ -57,7 +57,7 @@
     "gameVersion": {
       "$id": "#/properties/gameVersion",
       "$ref": "#/definitions/semver",
-      "description": "compatable game version"
+      "description": "compatible game version"
     },
     "description": {
       "$id": "#/properties/description",
@@ -93,7 +93,7 @@
     "conflictsWith": {
       "$id": "#/properties/conflictsWith",
       "type": "object",
-      "description": "incompatabilities",
+      "description": "incompatibilities",
       "patternProperties": {
         "^([^\\s]*)$": {
           "$ref": "#/definitions/verrange",
